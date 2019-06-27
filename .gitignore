@@ -1,0 +1,26 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/packages
+/Store/obj
+/Store/bin/Release/Store.pdb
+/Store/bin/Release/Store.exe.config
+/Store/bin/Release/Store.exe
+/Store/bin/Release
+/Store/bin/Debug/Store.pdb
+/Store/bin/Debug/Store.exe.config
+/Store/bin/Debug/Store.exe
+/Store/bin/Debug
+/Store/obj
+/Store/bin/Release/Store.pdb
+/Store/bin/Release/Store.exe.config
+/Store/bin/Release/Store.exe
+/Store/bin/Release
+/Store/bin/Debug/Store.pdb
+/Store/bin/Debug/Store.exe.config
+/Store/bin/Debug/Store.exe
+/Store/bin/Debug
+/Store/bin
+/Store/bin
+/Store/bin/Debug
