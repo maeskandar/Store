@@ -8,30 +8,40 @@ namespace Store
 {
     class Item
     {
-        public int id;
-        private double weight;
-        private string color;
-        private Size size;
+        public int ID { get; private set; }
+        public double Weight { get; private set; }
+        public string Color { get; private set; }
+        public Size Size { get; private set; }
 
         public override string ToString()
         {
-            return $"{id},{weight},{color},{size.ToString()}";
+            return $"{ID},{Weight},{Color},{Size.ToString()}";
         }
 
         public Item(string itemString)
         {
             var props = itemString.Split(',');
 
-            if (typeof(Item).GetProperties().Length != props.Length)
+            if (this.GetType().GetProperties().Length != props.Length)
             {
                 throw new Exception("فایل فرمت مورد نظر را ندارد");
             }
 
-            this.id = int.Parse(props[0]);
-            this.weight = double.Parse(props[1]);
-            this.color = props[2];
-            var size = props[3].Split(';');
-            this.size = new Size { Width = double.Parse(size[0]), Height = double.Parse(size[1]), Length = double.Parse(size[2]) };
+            var id = int.Parse(props[0]);
+            var weight = double.Parse(props[1]);
+            var color = props[2];
+            var sizeStr = props[3].Split(';');
+            var size = new Size(double.Parse(sizeStr[0]), double.Parse(sizeStr[1]), double.Parse(sizeStr[2]));
+
+            Fill(id, weight, color, size);
+        }
+
+        private void Fill(int id, double weight, string color, Size size)
+        {
+            this.ID = id;
+            this.Weight = weight;
+            this.Color = color;
+            this.Size = size;
         }
     }
 
@@ -40,6 +50,13 @@ namespace Store
         public double Width { get; set; }
         public double Height { get; set; }
         public double Length { get; set; }
+
+        public Size(double width, double length, double height)
+        {
+            this.Width = width;
+            this.Length = length;
+            this.Height = height;
+        }
 
         public override string ToString()
         {

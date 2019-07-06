@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 namespace Store
 {
-    class ItemRepo
+    class Repo<T>
     {
-        List<Item> items;
-        string db;
+        protected List<T> items;
 
-        public ItemRepo(string filename = "Itemdb.csv")
+        protected string db;
+        
+        public Repo(string filename = null)
         {
-            items = new List<Item>();
+            filename = filename == null ? typeof(T).Name + "db.csv" : filename;
+
+            items = new List<T>();
 
             if (!File.Exists(filename))
             {
@@ -24,25 +27,25 @@ namespace Store
             else
             {
                 var lines = File.ReadAllLines(filename);
-                items = lines.Skip(1).Select(line => new Item(line)).ToList();
+                items = lines.Skip(1).Select(line => (T)Activator.CreateInstance(typeof(T), line)).ToList();
             }
 
             db = filename;
         }
 
-        public void Add(Item item)
+        public void Add(T item)
         {
             items.Add(item);
             SaveChanges();
         }
 
-        public void Remove(Item item)
+        public void Remove(T item)
         {
             items.Remove(item);
             SaveChanges();
         }
 
-        public Item[] GetItems()
+        public T[] GetItems()
         {
             return items.ToArray();
         }
@@ -50,7 +53,7 @@ namespace Store
         public void SaveChanges()
         {
             var filelines = new StringBuilder();
-            var props = typeof(Item).GetProperties();
+            var props = typeof(T).GetProperties();
 
             for (var i = 0; i < props.Length; i++)
             {
@@ -59,8 +62,8 @@ namespace Store
                     filelines.Append($"{props[i].Name}\n");
                 }
                 else
-	            {
-                    filelines.Append($"{props[i].Name},"); 
+                {
+                    filelines.Append($"{props[i].Name},");
                 }
             }
 

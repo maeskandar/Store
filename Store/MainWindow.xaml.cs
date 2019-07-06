@@ -24,6 +24,7 @@ namespace Store
         public MainWindow()
         {
             InitializeComponent();
+            var a = new Repo<Item>();
         }
 
         private async void LoginClick(object sender, RoutedEventArgs e)
@@ -42,7 +43,7 @@ namespace Store
         {
             LoginWindow login = new LoginWindow();
             login.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }
