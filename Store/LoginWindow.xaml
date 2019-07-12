@@ -5,23 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Store"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="300">
+        Title="LoginWindow" Height="300" Width="400">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFE4E4E4" Offset="0"/>
+            <GradientStop Color="#FF434343" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition/>
+            <RowDefinition Height="10"/>
             <RowDefinition/>
+            <RowDefinition Height="10"/>
             <RowDefinition/>
+            <RowDefinition Height="10"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label FlowDirection="RightToLeft" HorizontalAlignment="Center" Grid.ColumnSpan="2">نام شرکت</Label>
-        <TextBox Grid.Row="1" Width="50"/>
-        <Label Grid.Row="1" Grid.Column="1" FlowDirection="RightToLeft">نام کاربری:</Label>
-        <PasswordBox Grid.Row="2" Width="50"/>
-        <Label Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">رمز عبور:</Label>
-        <Button Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center">ورود</Button>
+        <Label FlowDirection="RightToLeft" FontSize="16" HorizontalAlignment="Center" Grid.ColumnSpan="2">ورود به فروشگاه</Label>
+        <TextBox Name="ID" Grid.Row="2" Width="100"/>
+        <Label Grid.Row="2" Grid.Column="1" FlowDirection="RightToLeft">نام کاربری:</Label>
+        <PasswordBox Name="Pass" Grid.Row="4" Width="100"/>
+        <Label Grid.Row="4" Grid.Column="1" FlowDirection="RightToLeft">رمز عبور:</Label>
+        <Button Grid.Row="6" Grid.ColumnSpan="2" FontSize="14" Padding="5" HorizontalAlignment="Center" Background="Green" FontWeight="Black" Foreground="White" Click="Button_Click">ورود</Button>
     </Grid>
 </Window>

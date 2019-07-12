@@ -19,9 +19,27 @@ namespace Store
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private Repo<User> userRepo;
         public LoginWindow()
         {
             InitializeComponent();
+            userRepo = new Repo<User>();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var users = userRepo.GetItems();
+            var match = users.FirstOrDefault(user => user.Match(ID.Text, Pass.Password));
+            if (match == null)
+            {
+                MessageBox.Show("نام کاربری یا رمز عبور غلط می باشد.", "خطا", MessageBoxButton.OK);
+            }
+            else
+            {
+                MasterWindow window = new MasterWindow();
+                window.Show();
+                this.Close();
+            }
         }
     }
 }

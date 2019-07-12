@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:Store"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button FlowDirection="RightToLeft" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">ورود به صفحه login</Button>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFE4E4E4" Offset="0"/>
+            <GradientStop Color="#FF434343" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="به فروشگاه خوش آمدید" FontSize="16" FlowDirection="RightToLeft"/>
+        <Button Grid.Row="1" FlowDirection="RightToLeft" FontWeight="Black" Foreground="White" Background="Green" FontSize="14" Padding="5" Margin="0,10,0,0" HorizontalAlignment="Center" Click="Button_Click">صفحه‌ی ورود</Button>
     </Grid>
 </Window>

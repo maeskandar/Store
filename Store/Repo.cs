@@ -59,7 +59,7 @@ namespace Store
             {
                 if (i == props.Length - 1)
                 {
-                    filelines.Append($"{props[i].Name}\n");
+                    filelines.Append($"{props[i].Name}");
                 }
                 else
                 {
@@ -69,7 +69,7 @@ namespace Store
 
             foreach (var item in items)
             {
-                filelines.Append($"{item}\n");
+                filelines.Append($"\n{item}");
             }
 
             File.WriteAllLines(db, new[] { filelines.ToString() });

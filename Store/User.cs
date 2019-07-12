@@ -9,7 +9,7 @@ namespace Store
     class User
     {
         public string ID { get; private set; }
-        private string Password { get; set; }
+        private string Password;
         public string Firstname { get; private set; }
         public string Lastname { get; private set; }
         public string Address { get; private set; }
@@ -19,7 +19,7 @@ namespace Store
         {
             
             this.ID = id;
-            this.Password = id;
+            this.Password = password;
             this.Firstname = firstname;
             this.Lastname = lastname;
             this.Address = address;
@@ -30,7 +30,9 @@ namespace Store
         {
             var props = itemString.Split(',');
 
-            if (this.GetType().GetProperties().Length != props.Length)
+            var thisProps = this.GetType().GetProperties();
+
+            if (thisProps.Length + 1 != props.Length)
             {
                 throw new Exception("فایل فرمت مورد نظر را ندارد");
             }
@@ -43,6 +45,16 @@ namespace Store
             var isManager = bool.Parse(props[5]);
 
             Fill(id, pass, first, last, address, isManager);
+        }
+
+        public bool Match(string id, string pass)
+        {
+            if (this.ID == id && this.Password == pass)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public override string ToString()
